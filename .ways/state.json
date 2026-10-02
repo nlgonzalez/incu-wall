@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "updatedAt": "2026-10-02T18:17:03Z",
+  "flow": "feature",
+  "way": "incu/dev",
+  "wayVersion": "",
+  "discipline": "development",
+  "slug": "001-tablero-mensajes",
+  "branch": "feat/001-tablero-mensajes",
+  "worktree": "",
+  "isolationType": "branch",
+  "title": "Tablero de mensajes (despedida de Marcos)",
+  "ticket": null,
+  "lastPhase": "implementation",
+  "phase": "validation",
+  "documents": [
+    {
+      "name": "PRD.md",
+      "path": "docs/prds/001-tablero-mensajes/PRD.md",
+      "status": "approved"
+    },
+    {
+      "name": "PLAN.md",
+      "path": "docs/prds/001-tablero-mensajes/PLAN.md",
+      "status": "approved"
+    },
+    {
+      "name": "TESTING.md",
+      "path": "docs/prds/001-tablero-mensajes/TESTING.md",
+      "status": "draft"
+    }
+  ],
+  "gates": [
+    {
+      "id": "prd",
+      "label": "PRD review",
+      "status": "passed",
+      "at": "2026-10-02T17:42:03Z"
+    },
+    {
+      "id": "plan",
+      "label": "Plan review",
+      "status": "passed",
+      "at": "2026-10-02T17:42:49Z"
+    },
+    {
+      "id": "testing",
+      "label": "User testing",
+      "status": "pending",
+      "at": null
+    },
+    {
+      "id": "pr-develop",
+      "label": "PR feat→develop",
+      "status": "pending",
+      "at": null
+    },
+    {
+      "id": "pr-main",
+      "label": "PR develop→main",
+      "status": "pending",
+      "at": null
+    }
+  ],
+  "steps": [
+    {
+      "id": "A1",
+      "label": "Scaffold Next.js + TypeScript strict + Tailwind + ESLint con pnpm; scripts `typecheck`, `lint`, `test`, `test:",
+      "status": "done"
+    },
+    {
+      "id": "A2",
+      "label": "Vitest",
+      "status": "done"
+    },
+    {
+      "id": "A3",
+      "label": "`supabase init`; validación de env con zod en `src/lib/env.ts`",
+      "status": "done"
+    },
+    {
+      "id": "B1",
+      "label": "Migración `supabase/migrations/*_init.sql`: tablas `boards` y `messages`, índice, RLS activado sin políticas, ",
+      "status": "done"
+    },
+    {
+      "id": "B2",
+      "label": "Aplicar migración en Supabase local + test de integración AC-3",
+      "status": "done"
+    },
+    {
+      "id": "B3",
+      "label": "Aplicar migración al proyecto cloud",
+      "status": "done"
+    },
+    {
+      "id": "C1",
+      "label": "`src/lib/tokens.ts` y `src/lib/validation.ts` + tests unitarios",
+      "status": "done"
+    },
+    {
+      "id": "C2",
+      "label": "`src/server/boards.ts`: crear, obtener por slug, verificar adminKey, set status/cover",
+      "status": "done"
+    },
+    {
+      "id": "C3",
+      "label": "`src/server/messages.ts`: listar",
+      "status": "done"
+    },
+    {
+      "id": "C4",
+      "label": "`src/server/media.ts`: URL firmada de subida, verificación JPEG/EXIF/tamaño, URLs firmadas de lectura/descarga",
+      "status": "done"
+    },
+    {
+      "id": "C5",
+      "label": "Server Actions",
+      "status": "done"
+    },
+    {
+      "id": "D1",
+      "label": "Home `/`: formulario de creación",
+      "status": "done"
+    },
+    {
+      "id": "D2",
+      "label": "Muro `/b/[boardId]`: header con portada, mosaico CSS columns, 404",
+      "status": "done"
+    },
+    {
+      "id": "D3",
+      "label": "Formulario de mensaje: nombre/texto/foto, pipeline de imagen en cliente, previsualización, publicar; oculto si",
+      "status": "done"
+    },
+    {
+      "id": "D4",
+      "label": "Editar/borrar propio mensaje con `editToken` de `localStorage` (RF-06)",
+      "status": "done"
+    },
+    {
+      "id": "D5",
+      "label": "Lightbox accesible (teclado, foco, Esc/flechas) con descarga (RF-10)",
+      "status": "done"
+    },
+    {
+      "id": "D6",
+      "label": "Panel `/b/[boardId]/admin?key=…`: lista con ocultos, ocultar/restaurar/borrar, cerrar/reabrir, links",
+      "status": "done"
+    },
+    {
+      "id": "E1",
+      "label": "Fixtures (JPEG con GPS EXIF, HEIC generado con `sips`) y E2E Playwright de los AC",
+      "status": "done"
+    },
+    {
+      "id": "E2",
+      "label": "Pulido mobile-first y accesibilidad (contraste AA, foco visible, `alt` con autor)",
+      "status": "done"
+    },
+    {
+      "id": "F1",
+      "label": "`pnpm typecheck && pnpm lint && pnpm test && pnpm test:e2e && pnpm build`",
+      "status": "done"
+    },
+    {
+      "id": "F2",
+      "label": "Escaneos Snyk Code + Snyk SCA + SonarQube; fix loop hasta limpio",
+      "status": "blocked"
+    },
+    {
+      "id": "F3",
+      "label": "`TESTING.md` con guía de prueba manual (incl. iPhone/HEIC y LCP con 50 mensajes)",
+      "status": "done"
+    }
+  ]
+}
