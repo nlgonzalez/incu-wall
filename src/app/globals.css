@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/*
+ * Incu Design System (incu-brand/tokens/incu.css), dark only.
+ * El negro es la página, el neón es el foco: un solo neón (violeta) en esta superficie.
+ */
+:root {
+  --c-violet: #b100ff;
+  --c-violet-deep: #8a00ff;
+  --c-lime: #d9ff00;
+  --c-orange: #ff7a00;
+  --c-red: #ff2e2e;
+  --c-emerald: #00faaf;
+
+  --bg: #0a0a0c;
+  --bg-elev-1: #14141a;
+  --bg-elev-2: #1b1b22;
+  --fg-1: #ffffff;
+  --fg-2: rgba(255, 255, 255, 0.72);
+  --fg-3: rgba(255, 255, 255, 0.48);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.32);
+  --accent: var(--c-violet);
+  --accent-hover: #c233ff;
+  --accent-press: var(--c-violet-deep);
+  --focus-ring: var(--c-lime);
+
+  --glow-violet-soft: 0 0 24px rgba(177, 0, 255, 0.25);
+  --glow-button: 0 0 24px rgba(177, 0, 255, 0.45);
+  --ease-out: cubic-bezier(0.16, 0.84, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev-1: var(--bg-elev-1);
+  --color-elev-2: var(--bg-elev-2);
+  --color-fg-1: var(--fg-1);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-press: var(--accent-press);
+  --color-lime: var(--c-lime);
+  --color-orange: var(--c-orange);
+  --color-danger: var(--c-red);
+  --color-success: var(--c-emerald);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-dela);
+  --font-mono: var(--font-jetbrains);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg-1);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+/* Regla dura del sistema: el anillo lime siempre visible, nunca se remueve. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* Backdrop blur solo en overlays de modal. */
+dialog::backdrop {
+  background: rgba(10, 10, 12, 0.6);
+  backdrop-filter: blur(24px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: reveal 420ms var(--ease-out) both;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-[22px] text-[15px] font-semibold transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-[0.32] disabled:active:scale-100;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-fg-1 hover:bg-accent-hover hover:shadow-[var(--glow-button)] active:bg-accent-press;
+}
+@utility btn-secondary {
+  @apply btn border border-line-strong bg-transparent text-fg-1 hover:border-white/60 hover:bg-white/6;
+}
+@utility btn-danger {
+  @apply btn border border-danger/45 bg-transparent text-danger hover:bg-danger/12;
+}
+@utility btn-ghost {
+  @apply btn bg-transparent px-3 text-fg-1/85 hover:text-accent-hover;
+}
+@utility eyebrow {
+  @apply font-mono text-xs font-medium tracking-[0.16em] text-fg-3 uppercase;
+}
+@utility field-label {
+  @apply mb-1.5 block text-sm font-medium text-fg-1;
+}
+@utility field {
+  @apply block w-full rounded-md border border-white/18 bg-white/4 px-[13px] py-[11px] text-base text-fg-1 shadow-[inset_0_1px_0_rgba(0,0,0,0.4)] placeholder:text-white/40 focus:border-lime focus:shadow-[0_0_0_2px_rgba(217,255,0,0.25)] focus:outline-none;
+}
+@utility card {
+  @apply rounded-md border border-line bg-elev-1;
+}
+@utility badge {
+  @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold tracking-[0.04em];
+}
